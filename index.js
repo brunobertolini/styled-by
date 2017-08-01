@@ -1,10 +1,15 @@
-'use strict';
-module.exports = (input, opts) => {
-	if (typeof input !== 'string') {
-		throw new TypeError(`Expected a string, got ${typeof input}`);
-	}
+const mapOpt = {
+	function: ({options, props, prop}) => options[props[prop]](props),
+	string: ({options, props, prop}) => options[props[prop]]
+}
 
-	opts = opts || {};
+const mapOptions = {
+	string: ({options}) => options,
+	function: ({options, props}) => options(props),
+	object: ({options, props, prop}) => mapOpt[typeof options[props[prop]]]({options, props, prop})
+}
 
-	return input + ' & ' + (opts.postfix || 'rainbows');
-};
+const styledBy = (prop, options) => props =>
+	options ? mapOptions[typeof options]({prop, options, props}) : props[prop]
+
+module.exports = styledBy

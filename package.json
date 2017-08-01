@@ -39,6 +39,9 @@
 		"validate-commit-msg": "^2.14.0",
 		"xo": "^0.18.2"
 	},
+  "xo": {
+    "semicolon": false
+  },
 	"nyc": {
 		"reporter": [
 			"lcov",
