@@ -1,51 +1,51 @@
 {
-	"name": "styled-by",
-	"version": "0.0.0",
-	"description": "Simple and powerful lib to handle styled props in your components",
-	"license": "MIT",
-	"repository": "brunobertolini/styled-by",
-	"author": {
-		"name": "Bruno Bertolini",
-		"email": "dev@brunobertolini.com",
-		"url": "brunobertolini.com"
-	},
-	"engines": {
-		"node": ">=4"
-	},
-	"scripts": {
+  "name": "styled-by",
+  "version": "0.1.0",
+  "description": "Simple and powerful lib to handle styled props in your components",
+  "license": "MIT",
+  "repository": "brunobertolini/styled-by",
+  "author": {
+    "name": "Bruno Bertolini",
+    "email": "dev@brunobertolini.com",
+    "url": "brunobertolini.com"
+  },
+  "engines": {
+    "node": ">=4"
+  },
+  "scripts": {
     "test": "xo && nyc ava",
     "prepush": "yarn run test",
     "commitmsg": "validate-commit-msg",
     "release": "standard-version --no-verify",
     "postrelease": "git push --follow-tags origin master; npm publish"
-	},
-	"files": [
-		"index.js"
-	],
-	"keywords": [
-		"react",
-		"css",
-		"css-in-js",
-		"styled-components",
-		"props"
-	],
-	"dependencies": {},
-	"devDependencies": {
-		"ava": "^0.20.0",
-		"codecov": "^2.2.0",
-		"husky": "^0.14.3",
-		"nyc": "^11.0.0",
-		"standard-version": "^4.2.0",
-		"validate-commit-msg": "^2.14.0",
-		"xo": "^0.18.2"
-	},
+  },
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "react",
+    "css",
+    "css-in-js",
+    "styled-components",
+    "props"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "ava": "^0.20.0",
+    "codecov": "^2.2.0",
+    "husky": "^0.14.3",
+    "nyc": "^11.0.0",
+    "standard-version": "^4.2.0",
+    "validate-commit-msg": "^2.14.0",
+    "xo": "^0.18.2"
+  },
   "xo": {
     "semicolon": false
   },
-	"nyc": {
-		"reporter": [
-			"lcov",
-			"text"
-		]
-	}
+  "nyc": {
+    "reporter": [
+      "lcov",
+      "text"
+    ]
+  }
 }
