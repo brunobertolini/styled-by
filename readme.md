@@ -2,43 +2,33 @@
 
 > Simple and powerful lib to handle styled props in your components
 
-
 ## Install
 
 ```
 $ npm install styled-by
 ```
 
-
 ## Usage
 
+Basic usage
+
 ```js
-const styledBy = require('styled-by');
+import styled from 'styled-components';
+import styledBy from 'styled-by';
 
-styledBy('unicorns');
-//=> 'unicorns & rainbows'
+const Button = styled.button`
+  background: ${styledBy('background')};
+  color: ${styledBy('color')};
+  padding: 10px;
+  border-radius: 10px;  
+`;
+
+const Wrapper = props => (
+  <Button background="#FFF" color="rgba(0,0,0,0.5)">Ok</Button>
+);
+
+export default Wrapper;
 ```
-
-
-## API
-
-### styledBy(input, [options])
-
-#### input
-
-Type: `string`
-
-Lorem ipsum.
-
-#### options
-
-##### foo
-
-Type: `boolean`<br>
-Default: `false`
-
-Lorem ipsum.
-
 
 ## License
 
