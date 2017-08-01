@@ -1,0 +1,37 @@
+{
+	"name": "styled-by",
+	"version": "0.0.0",
+	"description": "Simple and powerful lib to handle styled props in your components",
+	"license": "MIT",
+	"repository": "brunobertolini/styled-by",
+	"author": {
+		"name": "Bruno Bertolini",
+		"email": "dev@brunobertolini.com",
+		"url": "brunobertolini.com"
+	},
+	"engines": {
+		"node": ">=4"
+	},
+	"scripts": {
+		"test": "xo && nyc ava"
+	},
+	"files": [
+		"index.js"
+	],
+	"keywords": [
+		""
+	],
+	"dependencies": {},
+	"devDependencies": {
+		"ava": "^0.20.0",
+		"codecov": "^2.2.0",
+		"nyc": "^11.0.0",
+		"xo": "^0.18.2"
+	},
+	"nyc": {
+		"reporter": [
+			"lcov",
+			"text"
+		]
+	}
+}
