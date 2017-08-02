@@ -1,6 +1,6 @@
 {
   "name": "styled-by",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Simple and powerful lib to handle styled props in your components",
   "license": "MIT",
   "repository": "brunobertolini/styled-by",
