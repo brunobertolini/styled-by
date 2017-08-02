@@ -5,14 +5,13 @@
 ## Install
 
 ```
-$ npm install styled-by
+yarn add styled-by
 ```
 
-## Usage
-
-Basic usage
+## Basic usage
 
 ```js
+import React from 'react';
 import styled from 'styled-components';
 import styledBy from 'styled-by';
 
@@ -23,11 +22,89 @@ const Button = styled.button`
   border-radius: 10px;  
 `;
 
-const Wrapper = props => (
-  <Button background="#FFF" color="rgba(0,0,0,0.5)">Ok</Button>
-);
+export default function App() {
+  return (
+    <Button background="#FFF" color="rgba(0,0,0,0.5)">
+      Ok
+    </Button>
+  );
+}
+```
 
-export default Wrapper;
+## Options
+
+Basicaly, if you use `styledBy('prop')`, it returns prop value. But, if you want do more, use options.
+
+Options can be:
+- string;
+- function;
+- object (and object value can be string or function)
+
+### String
+
+Option as string, will be applied when prop is present.
+
+```js
+const Button = styled.button`
+  ${styledBy('disabled', 'background: #CCC;')}
+`;  
+
+<Button disabled />
+```
+
+### Function
+
+Option as function, always will be called passing props, even if props is undefined
+
+```js
+  const Button = styled.button`
+  ${styledBy('disabled', props => `background: ${props.disabled ? '#CCC' : '#FFF'};`)}
+`;  
+
+<Button disabled />
+```
+
+### Object String
+
+Option as object string, will be handled by prop value
+
+```js
+const Button = styled.button`
+  ${styledBy('corner', {
+    rounded: `border-radius: 5px;`,
+    circle: `border-radius: 100px;`
+  })}  
+`;  
+
+<Button corner="rounded" />
+```
+
+### Object Function
+
+Option as object function, will be handled by prop value, and call function as prop param
+
+```js
+const Button = styled.button`
+  ${styledBy('kind', {
+    default: ({ theme, color }) => `
+      background: ${theme.colors[color].base};
+      color: ${theme.colors[color].contrast};
+      border: none;
+    `,
+    outline: ({ theme, color }) => `
+      background: transparent;
+      color: ${theme.colors[color].base};
+      border: 1px solid ${theme.colors[color].base};
+    `,
+    clean: ({ theme, color }) => `
+      background: transparent;
+      color: ${theme.colors[color].base};
+      border: none;
+    `
+  })}  
+`;  
+
+<Button color="primary" kind="outline" />
 ```
 
 ## License
