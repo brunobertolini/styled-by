@@ -1,6 +1,6 @@
 {
   "name": "styled-by",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Simple and powerful lib to handle styled props in your components",
   "license": "MIT",
   "repository": "brunobertolini/styled-by",
@@ -38,8 +38,7 @@
     "styled-components",
     "props"
   ],
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "ava": "^0.20.0",
     "babel-cli": "^6.24.1",
