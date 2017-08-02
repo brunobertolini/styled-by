@@ -1,12 +1,14 @@
 const mapOpt = {
 	function: ({options, props, prop}) => options[props[prop]](props),
-	string: ({options, props, prop}) => options[props[prop]]
+	string: ({options, props, prop}) => options[props[prop]],
+	undefined: () => {}
 }
 
 const mapOptions = {
 	string: ({options}) => options,
 	function: ({options, props}) => options(props),
-	object: ({options, props, prop}) => mapOpt[typeof options[props[prop]]]({options, props, prop})
+	object: ({options, props, prop}) => mapOpt[typeof options[props[prop]]]({options, props, prop}),
+	undefined: () => {}
 }
 
 const styledBy = (prop, options) => props =>
