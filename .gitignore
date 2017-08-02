@@ -5,3 +5,5 @@ coverage
 *.swp
 *.log
 *.log.*
+lib
+build
