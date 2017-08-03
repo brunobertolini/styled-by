@@ -1,6 +1,6 @@
 {
   "name": "styled-by",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Simple and powerful lib to handle styled props in your components",
   "license": "MIT",
   "repository": "brunobertolini/styled-by",
@@ -25,7 +25,6 @@
     "prepush": "yarn run test",
     "commitmsg": "validate-commit-msg",
     "release": "standard-version --no-verify",
-    "postrelease": "git push --follow-tags origin master; npm publish",
     "prepublish": "yarn build"
   },
   "files": [
