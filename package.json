@@ -1,6 +1,6 @@
 {
   "name": "styled-by",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Simple and powerful lib to handle styled props in your components",
   "license": "MIT",
   "repository": "brunobertolini/styled-by",
@@ -13,8 +13,8 @@
     "node": ">=4"
   },
   "main": "lib/index.js",
-  "jsnext:main": "build/styled-by.es.js",
-  "module": "build/styled-by.es.js",
+  "jsnext:main": "build/styled-by.min.js",
+  "module": "build/styled-by.min.js",
   "scripts": {
     "build": "yarn build:lib && yarn build:build",
     "prebuild:lib": "rimraf lib/*",
@@ -29,7 +29,8 @@
     "prepublish": "yarn build"
   },
   "files": [
-    "index.js"
+    "build/",
+    "lib/"
   ],
   "keywords": [
     "react",
