@@ -11,7 +11,10 @@ const mapOptions = {
 	undefined: () => {}
 }
 
-const styledBy = (prop, options) => props =>
-	options ? mapOptions[typeof options]({prop, options, props}) : props[prop]
+const styledBy = (prop, options) => props => props[prop]
+	? options
+		? mapOptions[typeof options]({prop, options, props})
+		: props[prop]
+	: ''
 
 module.exports = styledBy

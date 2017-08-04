@@ -21,7 +21,9 @@
     "build:lib": "babel --out-dir lib --ignore \"test.js\" src",
     "prebuild:build": "rimraf build/*",
     "build:build": "rollup -c ",
+    "lint": "xo",
     "test": "xo && nyc ava",
+    "precommit": "yarn lint",
     "prepush": "yarn run test",
     "commitmsg": "validate-commit-msg",
     "release": "standard-version --no-verify",
@@ -58,7 +60,10 @@
     "xo": "^0.18.2"
   },
   "xo": {
-    "semicolon": false
+    "semicolon": false,
+    "rules": {
+      "operator-linebreak": "off"
+    }
   },
   "nyc": {
     "reporter": [
