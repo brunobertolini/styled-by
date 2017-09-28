@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.3.0"></a>
+# [0.3.0](https://github.com/brunobertolini/styled-by/compare/v0.2.5...v0.3.0) (2017-09-28)
+
+
+### Features
+
+* object options with default when passed prop is not defined ([436be46](https://github.com/brunobertolini/styled-by/commit/436be46))
+* options handler with one styledBy declaration ([d409925](https://github.com/brunobertolini/styled-by/commit/d409925))
+
+
+
 <a name="0.2.5"></a>
 ## [0.2.5](https://github.com/brunobertolini/styled-by/compare/v0.2.4...v0.2.5) (2017-08-04)
 
