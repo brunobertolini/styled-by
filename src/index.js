@@ -1,7 +1,7 @@
 const mapOpt = {
 	function: ({options, props, prop}) => options[props[prop]](props),
 	string: ({options, props, prop}) => options[props[prop]],
-	undefined: () => {}
+	undefined: ({options, props}) => typeof options._ === 'function' ? options._(props) : null
 }
 
 const mapOptions = {

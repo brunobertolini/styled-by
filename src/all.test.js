@@ -40,6 +40,19 @@ test('object with string', t => {
 	t.is(size, options[props.size])
 })
 
+test('object with string and no match', t => {
+	const options = {
+		_: props => `font-size: ${props.size};`,
+		small: 'font-size: 0.8rem;',
+		medium: 'font-size: 1rem;',
+		large: 'font-size: 1.2rem;'
+	}
+
+	const size = styledBy('size', options)({size: '0.5rem'})
+
+	t.is(size, 'font-size: 0.5rem;')
+})
+
 test('object with function', t => {
 	const options = {
 		default: props => props.blocked ? 'default blocked' : 'default unblocked',

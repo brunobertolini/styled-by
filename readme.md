@@ -79,6 +79,20 @@ const Button = styled.button`
 <Button corner="rounded" />
 ```
 
+When option is a object, and styledBy don't find passed option, and if `_` option is defined as a function, call it.
+
+```js
+const Button = styled.button`
+	${styledBy('corner', {
+		_: ({ corner }) => {}
+		rounded: `border-radius: 5px;`,
+		circle: `border-radius: 100px;`
+	})}  
+`;  
+
+<Button corner="square" />
+```
+
 ### Object Function
 
 Option as object function, will be handled by prop value, and call function as prop param
