@@ -16,18 +16,18 @@ import styled from 'styled-components';
 import styledBy from 'styled-by';
 
 const Button = styled.button`
-  background: ${styledBy('background')};
-  color: ${styledBy('color')};
-  padding: 10px;
-  border-radius: 10px;  
+	background: ${styledBy('background')};
+	color: ${styledBy('color')};
+	padding: 10px;
+	border-radius: 10px;  
 `;
 
 export default function App() {
-  return (
-    <Button background="#FFF" color="rgba(0,0,0,0.5)">
-      Ok
-    </Button>
-  );
+	return (
+		<Button background="#FFF" color="rgba(0,0,0,0.5)">
+			Ok
+		</Button>
+	);
 }
 ```
 
@@ -46,7 +46,7 @@ Option as string, will be applied when prop is present.
 
 ```js
 const Button = styled.button`
-  ${styledBy('disabled', 'background: #CCC;')}
+	${styledBy('disabled', 'background: #CCC;')}
 `;  
 
 <Button disabled />
@@ -57,8 +57,8 @@ const Button = styled.button`
 Option as function, always will be called passing props, even if props is undefined
 
 ```js
-  const Button = styled.button`
-  ${styledBy('disabled', props => `background: ${props.disabled ? '#CCC' : '#FFF'};`)}
+	const Button = styled.button`
+	${styledBy('disabled', props => `background: ${props.disabled ? '#CCC' : '#FFF'};`)}
 `;  
 
 <Button disabled />
@@ -70,10 +70,10 @@ Option as object string, will be handled by prop value
 
 ```js
 const Button = styled.button`
-  ${styledBy('corner', {
-    rounded: `border-radius: 5px;`,
-    circle: `border-radius: 100px;`
-  })}  
+	${styledBy('corner', {
+		rounded: `border-radius: 5px;`,
+		circle: `border-radius: 100px;`
+	})}  
 `;  
 
 <Button corner="rounded" />
@@ -85,27 +85,47 @@ Option as object function, will be handled by prop value, and call function as p
 
 ```js
 const Button = styled.button`
-  ${styledBy('kind', {
-    default: ({ theme, color }) => `
-      background: ${theme.colors[color].base};
-      color: ${theme.colors[color].contrast};
-      border: none;
-    `,
-    outline: ({ theme, color }) => `
-      background: transparent;
-      color: ${theme.colors[color].base};
-      border: 1px solid ${theme.colors[color].base};
-    `,
-    clean: ({ theme, color }) => `
-      background: transparent;
-      color: ${theme.colors[color].base};
-      border: none;
-    `
-  })}  
+	${styledBy('kind', {
+		default: ({ theme, color }) => `
+			background: ${theme.colors[color].base};
+			color: ${theme.colors[color].contrast};
+			border: none;
+		`,
+		outline: ({ theme, color }) => `
+			background: transparent;
+			color: ${theme.colors[color].base};
+			border: 1px solid ${theme.colors[color].base};
+		`,
+		clean: ({ theme, color }) => `
+			background: transparent;
+			color: ${theme.colors[color].base};
+			border: none;
+		`
+	})}  
 `;  
 
 <Button color="primary" kind="outline" />
 ```
+
+### Options list
+
+Instead of prop name in firts param, you can pass many options as a object
+
+```js
+const Button = styled.button`
+	${styledBy({
+		disabled: `background: #CCC;`,
+		corner: {
+			square: 'border-radius: 0;',
+			rounded: 'border-radius: 5px;',
+			circle: 'border-radius: 50px;'
+		}
+	})}  
+`;  
+
+```
+
+This works like many styledBy props declarations
 
 ## License
 

@@ -11,10 +11,19 @@ const mapOptions = {
 	undefined: () => {}
 }
 
-const styledBy = (prop, options) => props => props[prop]
+const styledProp = (prop, options) => props => props[prop]
 	? options
 		? mapOptions[typeof options]({prop, options, props})
 		: props[prop]
 	: ''
+
+const styledOptions = (options, defaultProps = {}) => props =>
+	Object.keys(options).reduce(
+		(memo, prop) => `${memo} ${styledProp(prop, options[prop])({...defaultProps, ...props})}`
+	, '')
+
+const styledBy = (prop, options) => typeof prop === 'string'
+	? styledProp(prop, options)
+	: styledOptions(prop, options)
 
 module.exports = styledBy

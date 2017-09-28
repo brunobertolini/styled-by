@@ -51,3 +51,67 @@ test('object with function', t => {
 
 	t.is(corner, options[props.corner](props))
 })
+
+test('object with options', t => {
+	const options = {
+		size: {
+			small: 'font-size: 0.8rem;',
+			medium: 'font-size: 1rem;',
+			large: 'font-size: 1.2rem;'
+		}
+	}
+
+	const size = styledBy(options)(props)
+
+	t.is(size, ` ${options.size[props.size]}`)
+})
+
+test('object with many options', t => {
+	const options = {
+		size: {
+			small: 'font-size: 0.8rem;',
+			medium: 'font-size: 1rem;',
+			large: 'font-size: 1.2rem;'
+		},
+		corner: {
+			square: 'border-radius: 0;',
+			rounded: 'border-radius: 5px;'
+		}
+	}
+
+	const size = styledBy(options)(props)
+
+	t.is(size, ` ${options.size[props.size]} ${options.corner[props.corner]}`)
+})
+
+test('object with options with defaults', t => {
+	const options = {
+		size: {
+			small: 'font-size: 0.8rem;',
+			medium: 'font-size: 1rem;',
+			large: 'font-size: 1.2rem;'
+		}
+	}
+
+	const size = styledBy(options, {size: 'large'})({})
+
+	t.is(size, ` ${options.size.large}`)
+})
+
+test('object with many options with defaults', t => {
+	const options = {
+		size: {
+			small: 'font-size: 0.8rem;',
+			medium: 'font-size: 1rem;',
+			large: 'font-size: 1.2rem;'
+		},
+		corner: {
+			square: 'border-radius: 0;',
+			rounded: 'border-radius: 5px;'
+		}
+	}
+
+	const size = styledBy(options, {size: 'large'})({corner: 'rounded'})
+
+	t.is(size, ` ${options.size.large} ${options.corner.rounded}`)
+})
