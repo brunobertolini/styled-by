@@ -48,16 +48,16 @@ test('object with string and no match', t => {
 		large: 'font-size: 1.2rem;'
 	}
 
-	const size = styledBy('size', options)({size: '0.5rem'})
+	const size = styledBy('size', options)({ size: '0.5rem' })
 
 	t.is(size, 'font-size: 0.5rem;')
 })
 
 test('object with function', t => {
 	const options = {
-		default: props => props.blocked ? 'default blocked' : 'default unblocked',
-		rounded: props => props.blocked ? 'rounded blocked' : 'rounded unblocked',
-		circle: props => props.blocked ? 'circle blocked' : 'circle unblocked'
+		default: props => (props.blocked ? 'default blocked' : 'default unblocked'),
+		rounded: props => (props.blocked ? 'rounded blocked' : 'rounded unblocked'),
+		circle: props => (props.blocked ? 'circle blocked' : 'circle unblocked')
 	}
 
 	const corner = styledBy('corner', options)(props)
@@ -106,7 +106,7 @@ test('object with options with defaults', t => {
 		}
 	}
 
-	const size = styledBy(options, {size: 'large'})({})
+	const size = styledBy(options, { size: 'large' })({})
 
 	t.is(size, ` ${options.size.large}`)
 })
@@ -124,7 +124,7 @@ test('object with many options with defaults', t => {
 		}
 	}
 
-	const size = styledBy(options, {size: 'large'})({corner: 'rounded'})
+	const size = styledBy(options, { size: 'large' })({ corner: 'rounded' })
 
 	t.is(size, ` ${options.size.large} ${options.corner.rounded}`)
 })

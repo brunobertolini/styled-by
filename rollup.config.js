@@ -5,12 +5,11 @@ export default {
 	entry: 'src/index.js',
 	moduleName: 'styledBy',
 	exports: 'named',
-	targets: [{
-		dest: 'build/styled-by.min.js',
-		format: 'umd'
-	}],
-	plugins: [
-		babel(),
-		uglify()
-	]
+	targets: [
+		{
+			dest: 'build/styled-by.min.js',
+			format: 'iife'
+		}
+	],
+	plugins: [babel(), uglify()]
 }
