@@ -13,11 +13,9 @@
   "scripts": {
     "lint": "prettier --single-quote --no-semi --write  '{src,test,.}/**/*.js'",
     "commitmsg": "commitlint -E GIT_PARAMS",
-    "prebuild": "rimraf lib && rimraf build",
     "build": "rollup -c ",
-    "postbuild": "mkdir lib && cp src/index.js lib/index.js",
     "test": "nyc ava",
-    "precommit": "yarn lint",
+    "precommit": "pretty-quick --staged",
     "prepush": "yarn run test",
     "release": "standard-version --no-verify",
     "prepublish": "yarn build"
@@ -40,11 +38,6 @@
     "extends": [
       "@commitlint/config-conventional"
     ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged"
-    }
   },
   "nyc": {
     "reporter": [
