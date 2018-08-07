@@ -1,6 +1,9 @@
 language: node_js
 node_js:
-  - '8'
-  - '6'
-after_script:
-  - './node_modules/.bin/nyc report --reporter=text-lcov > coverage.lcov && ./node_modules/.bin/codecov'
+  - "8"
+  - "6"
+  - "4"
+after_success:
+  - "yarn coverage"
+script:
+  - "yarn test"

@@ -14,6 +14,7 @@
     "lint": "prettier --single-quote --no-semi --write  '{src,test,.}/**/*.js'",
     "commitmsg": "commitlint -E GIT_PARAMS",
     "build": "rollup -c ",
+    "coverge": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
     "test": "nyc ava",
     "precommit": "pretty-quick --staged",
     "prepush": "yarn run test",
