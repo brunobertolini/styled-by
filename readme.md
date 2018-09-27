@@ -84,7 +84,7 @@ When option is a object, and styledBy don't find passed option, and if `_` optio
 ```js
 const Button = styled.button`
   ${styledBy('corner', {
-    _: ({ corner }) => {}
+    _: ({ corner }) => {},
     rounded: `border-radius: 5px;`,
     circle: `border-radius: 100px;`
   })}  
