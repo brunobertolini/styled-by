@@ -1,4 +1,8 @@
-# styled-by [![Build Status](https://travis-ci.org/brunobertolini/styled-by.svg?branch=master)](https://travis-ci.org/brunobertolini/styled-by) [![codecov](https://codecov.io/gh/brunobertolini/styled-by/badge.svg?branch=master)](https://codecov.io/gh/brunobertolini/styled-by?branch=master)
+<h1 align="center">
+  <img src="logo.png" alt="StyledBy" />
+</h1>
+
+[![Build Status](https://travis-ci.org/brunobertolini/styled-by.svg?branch=master)](https://travis-ci.org/brunobertolini/styled-by) [![codecov](https://codecov.io/gh/brunobertolini/styled-by/badge.svg?branch=master)](https://codecov.io/gh/brunobertolini/styled-by?branch=master)
 
 > Simple and powerful lib to handle styled props in your components
 
@@ -19,7 +23,7 @@ const Button = styled.button`
   background: ${styledBy('background')};
   color: ${styledBy('color')};
   padding: 10px;
-  border-radius: 10px;  
+  border-radius: 10px;
 `;
 
 export default function App() {
@@ -47,7 +51,7 @@ Option as string, will be applied when prop is present.
 ```js
 const Button = styled.button`
   ${styledBy('disabled', 'background: #CCC;')}
-`;  
+`
 
 <Button disabled />
 ```
@@ -59,7 +63,7 @@ Option as function, always will be called passing props, even if props is undefi
 ```js
   const Button = styled.button`
   ${styledBy('disabled', props => `background: ${props.disabled ? '#CCC' : '#FFF'};`)}
-`;  
+`
 
 <Button disabled />
 ```
@@ -73,8 +77,8 @@ const Button = styled.button`
   ${styledBy('corner', {
     rounded: `border-radius: 5px;`,
     circle: `border-radius: 100px;`
-  })}  
-`;  
+  })}
+`
 
 <Button corner="rounded" />
 ```
@@ -87,8 +91,8 @@ const Button = styled.button`
     _: ({ corner }) => {}
     rounded: `border-radius: 5px;`,
     circle: `border-radius: 100px;`
-  })}  
-`;  
+  })}
+`
 
 <Button corner="square" />
 ```
@@ -115,8 +119,8 @@ const Button = styled.button`
       color: ${theme.colors[color].base};
       border: none;
     `
-  })}  
-`;  
+  })}
+`
 
 <Button color="primary" kind="outline" />
 ```
@@ -134,9 +138,8 @@ const Button = styled.button`
       rounded: 'border-radius: 5px;',
       circle: 'border-radius: 50px;'
     }
-  })}  
-`;  
-
+  })}
+`
 ```
 
 This works like many styledBy props declarations
