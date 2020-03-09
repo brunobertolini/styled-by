@@ -22,8 +22,14 @@ test('string', t => {
 	t.is(margin, '25px')
 })
 
-test('function', t => {
-	const padding = styledBy('padding', props => props.padding)(props)
+test('function, passed value', t => {
+	const padding = styledBy('padding', val => val)(props)
+
+	t.is(padding, '10px')
+})
+
+test('function, passed props', t => {
+	const padding = styledBy('padding', (val, props) => props.padding)(props)
 
 	t.is(padding, '10px')
 })
@@ -42,7 +48,7 @@ test('object with string', t => {
 
 test('object with string and no match', t => {
 	const options = {
-		_: props => `font-size: ${props.size};`,
+		_: value => `font-size: ${value};`,
 		small: 'font-size: 0.8rem;',
 		medium: 'font-size: 1rem;',
 		large: 'font-size: 1.2rem;'
@@ -55,14 +61,33 @@ test('object with string and no match', t => {
 
 test('object with function', t => {
 	const options = {
-		default: props => (props.blocked ? 'default blocked' : 'default unblocked'),
-		rounded: props => (props.blocked ? 'rounded blocked' : 'rounded unblocked'),
-		circle: props => (props.blocked ? 'circle blocked' : 'circle unblocked')
+		default: (val, props) => (val ? 'default blocked' : 'default unblocked'),
+		rounded: (val, props) => (val ? 'rounded blocked' : 'rounded unblocked'),
+		circle: (val, props) => (val ? 'circle blocked' : 'circle unblocked')
 	}
 
 	const corner = styledBy('corner', options)(props)
 
 	t.is(corner, options[props.corner](props))
+})
+test('object with default function, using passed value', t => {
+	const options = {
+		_: (val, props) => val
+	}
+
+	const corner = styledBy('corner', options)(props)
+
+	t.is(corner, props.corner)
+})
+
+test('object with default function, using passed props', t => {
+	const options = {
+		_: (val, props) => props.corner
+	}
+
+	const corner = styledBy('corner', options)(props)
+
+	t.is(corner, props.corner)
 })
 
 test('object with options', t => {

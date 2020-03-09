@@ -1,13 +1,14 @@
 const mapOpt = {
-	function: ({ options, props, prop }) => options[props[prop]](props),
+	function: ({ options, props, prop }) =>
+		options[props[prop]](props[prop], props),
 	string: ({ options, props, prop }) => options[props[prop]],
-	undefined: ({ options, props }) =>
-		typeof options._ === 'function' ? options._(props) : null
+	undefined: ({ options, props, prop }) =>
+		typeof options._ === 'function' ? options._(props[prop], props) : null
 }
 
 const mapOptions = {
 	string: ({ options }) => options,
-	function: ({ options, props }) => options(props),
+	function: ({ options, props, prop }) => options(props[prop], props),
 	object: ({ options, props, prop }) =>
 		mapOpt[typeof options[props[prop]]]({ options, props, prop }),
 	undefined: () => {}
@@ -23,7 +24,10 @@ const styledProp = (prop, options) => props =>
 const styledOptions = (options, defaultProps = {}) => props =>
 	Object.keys(options).reduce(
 		(memo, prop) =>
-			`${memo} ${styledProp(prop, options[prop])({
+			`${memo} ${styledProp(
+				prop,
+				options[prop]
+			)({
 				...defaultProps,
 				...props
 			})}`,

@@ -58,14 +58,35 @@ const Button = styled.button`
 
 ### Function
 
-Option as function, always will be called passing props, even if props is undefined
+Option as function, always will be called passing `(value props)`.
 
 ```js
-  const Button = styled.button`
-  ${styledBy('disabled', props => `background: ${props.disabled ? '#CCC' : '#FFF'};`)}
+const Button = styled.button`
+  ${styledBy('disabled', value => `background: ${value ? '#CCC' : '#FFF'};`)}
 `
 
 <Button disabled />
+```
+
+Function arguments allow for code reuse and chaining (via `_.flow`, `R.pipe`, etc.):
+
+```js
+const getThemeSize = size => themeSizes[size] || themeColors["m"];
+const pxToRem = px => px / 16 + "rem";
+
+const Box = styled.div`
+	padding: ${styledBy("padding", _.flow(getThemeSize, pxToRem))};
+`;
+```
+
+```js
+const byHue = (s, l) => h => `hsl(${h}, ${s}, ${l})`;
+
+const Button = styled.button`
+	color: ${styledBy("hue", byHue(0.5, 0.75))};
+	background-color: ${styledBy("hue", byHue(0.75, 0.5))};
+	border-color: ${styledBy("hue", byHue(1, 0.25))};
+`;
 ```
 
 ### Object String
@@ -88,7 +109,7 @@ When option is a object, and styledBy don't find passed option, and if `_` optio
 ```js
 const Button = styled.button`
   ${styledBy('corner', {
-    _: ({ corner }) => {}
+    _: (value) => `border-radius: ${value};`,
     rounded: `border-radius: 5px;`,
     circle: `border-radius: 100px;`
   })}
